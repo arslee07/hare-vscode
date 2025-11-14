@@ -79,6 +79,8 @@ async function showDocumentation() {
 
 /** 
  * Wrapper for basic task callbacks, e.g. `hare.build`, `hare.test`, etc.
+ * @param command - Hare command to execute
+ * @returns Command callback.
  */
 function createHareTask(command: string): () => void {
     const { hareExecutable } = vscode.workspace.getConfiguration('hare')
