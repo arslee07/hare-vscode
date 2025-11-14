@@ -5,15 +5,24 @@ This extension adds basic support for the [Hare](https://harelang.org/) programm
 ## Features
 
 - Syntax highlighting:
-    ![syntax](https://codeberg.org/arslee07/hare-vscode/raw/branch/main/assets/syntax.png)
+
+    <img src="https://codeberg.org/arslee07/hare-vscode/raw/branch/main/assets/syntax.png" width=600 />
+
 - Snippets:
-    ![snippets](https://codeberg.org/arslee07/hare-vscode/raw/branch/main/assets/snippets.gif)
+
+    <img src="https://codeberg.org/arslee07/hare-vscode/raw/branch/main/assets/snippets.gif" width=600 />
+
 - Symbols outline for current file:
-    ![outline](https://codeberg.org/arslee07/hare-vscode/raw/branch/main/assets/outline.png)
+
+    <img src="https://codeberg.org/arslee07/hare-vscode/raw/branch/main/assets/outline.png" width=600 />
+
 - Documentation viewer:
-    ![doc](https://codeberg.org/arslee07/hare-vscode/raw/branch/main/assets/doc.gif)
+
+    <img src="https://codeberg.org/arslee07/hare-vscode/raw/branch/main/assets/doc.gif" width=600 />
+
 - Tasks for building, testing and running the workspace project
-    ![tasks](https://codeberg.org/arslee07/hare-vscode/raw/branch/main/assets/tasks.png)
+
+    <img src="https://codeberg.org/arslee07/hare-vscode/raw/branch/main/assets/tasks.png" width=600 />
 
 ## Building
 
