@@ -1,3 +1,7 @@
+/**
+ * @module hare-vscode
+ */
+
 import * as vscode from 'vscode';
 import { exec } from 'child_process';
 import { promisify } from 'util';
@@ -18,7 +22,7 @@ export function activate(context: vscode.ExtensionContext) {
 /** 
  * `hare.goToSymbol` command callback.
  */
-async function goToSymbol() {
+export async function goToSymbol() {
     const symbol = await vscode.window.showInputBox({
         prompt: 'Enter symbol name (e.g., fmt::println, bufio::init)',
         placeHolder: 'fmt::println'
@@ -52,7 +56,7 @@ async function goToSymbol() {
 /** 
  * `hare.showDocumentation` command callback.
  */
-async function showDocumentation() {
+export async function showDocumentation() {
     const identifier = await vscode.window.showInputBox({
         prompt: 'Enter indentifier name (e.g., bufio, fmt::println, ./sort.ha)',
         placeHolder: 'fmt::println'
@@ -82,7 +86,7 @@ async function showDocumentation() {
  * @param command - Hare command to execute
  * @returns Command callback.
  */
-function createHareTask(command: string): () => void {
+export function createHareTask(command: string): () => void {
     const { hareExecutable } = vscode.workspace.getConfiguration('hare')
 
     const folder = vscode.workspace.workspaceFolders?.[0];
@@ -107,7 +111,7 @@ function createHareTask(command: string): () => void {
 /**
  * Basic, regex-based symbol provider for Hare source files.
  */
-class HareDocumentSymbolProvider implements vscode.DocumentSymbolProvider {
+export class HareDocumentSymbolProvider implements vscode.DocumentSymbolProvider {
     static patterns: { regex: RegExp; kind: vscode.SymbolKind }[] = [
         { regex: /^(export\s+)?fn\s+([a-zA-Z_][a-zA-Z0-9_]*)/, kind: vscode.SymbolKind.Function },
         { regex: /^@(test|init|fini)\s+fn\s+([a-zA-Z_][a-zA-Z0-9_]+)/, kind: vscode.SymbolKind.Function },
