@@ -1,0 +1,129 @@
+{
+  "name": "hare",
+  "displayName": "Hare",
+  "description": "Hare support for VSCode",
+  "repository": {
+    "type": "git",
+    "url": "https://codeberg.org/arslee07/hare-vscode.git"
+  },
+  "publisher": "arslee07",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.106.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "hare",
+        "aliases": [
+          "Hare",
+          "hare"
+        ],
+        "extensions": [
+          ".ha"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "configuration": [
+      {
+        "title": "Hare",
+        "properties": {
+          "hare.hareExecutable": {
+            "type": "string",
+            "default": "hare",
+            "description": "`hare` executable path"
+          },
+          "hare.haredocExecutable": {
+            "type": "string",
+            "default": "haredoc",
+            "description": "`haredoc` executable path"
+          }
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "hare",
+        "scopeName": "source.hare",
+        "path": "./hare.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "hare",
+        "path": "./snippets.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "hare.build",
+        "title": "Hare: Build",
+        "icon": "$(check)"
+      },
+      {
+        "command": "hare.test",
+        "title": "Hare: Test",
+        "icon": "$(beaker)"
+      },
+      {
+        "command": "hare.run",
+        "title": "Hare: Run",
+        "icon": "$(play)"
+      },
+      {
+        "command": "hare.showDocumentation",
+        "title": "Hare: Show documentation",
+        "icon": "$(book)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "hare.build",
+          "group": "navigation@202",
+          "when": "resourceLangId == hare"
+        },
+        {
+          "command": "hare.test",
+          "group": "navigation@201",
+          "when": "resourceLangId == hare"
+        },
+        {
+          "command": "hare.run",
+          "group": "navigation@200",
+          "when": "resourceLangId == hare"
+        },
+        {
+          "command": "hare.showDocumentation",
+          "group": "navigation@203",
+          "when": "resourceLangId == hare"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test",
+    "package": "vsce package"
+  },
+  "dependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.105.0",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^3.7.0",
+    "eslint": "^9.39.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.3"
+  }
+}

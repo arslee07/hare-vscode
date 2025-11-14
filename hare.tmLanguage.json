@@ -1,0 +1,76 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Hare",
+	"scopeName": "source.hare",
+	"patterns": [
+		{
+			"name": "comment.hare",
+			"match": "//.*$"
+		},
+		{
+			"name": "string.quoted.double.hare",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.hare",
+					"match": "\\\\."
+				}
+			]
+		},
+		{
+			"name": "string.quoted.backtick.hare",
+			"begin": "`",
+			"end": "`",
+			"patterns": [
+				{
+					"name": "constant.character.escape.hare",
+					"match": "\\\\."
+				}
+			]
+		},
+		{
+			"name": "string.quoted.single.hare",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+				{
+					"name": "constant.character.escape.hare",
+					"match": "\\\\."
+				}
+			]
+		},
+		{
+			"name": "storage.type.hare",
+			"match": "\\b(bool|done|f32|f64|fn|i16|i32|i64|i8|int|let|never|nomem|opaque|rune|size|str|type|u16|u32|u64|u8|uint|uintptr|valist|void)\\b"
+		},
+		{
+			"name": "keyword.control.hare",
+			"match": "\\b(break|case|continue|defer|else|export|for|if|match|return|switch|use|yield)\\b"
+		},
+		{
+			"name": "keyword.operator.hare",
+			"match": "\\!|\\!\\=|\\%|\\%\\=|\\&|\\&\\&|\\&\\&\\=|\\&\\=|\\(|\\)\\*|\\*\\=|\\+|\\+\\=|\\,|\\-|\\-\\=|\\.|\\.\\.|\\.\\.\\.|\\/|\\/\\=|\\:|\\:\\:|\\;|\\<|\\<\\<|\\<\\<\\=|\\<\\=|\\=|\\=\\=|\\=\\>|\\>|\\>\\=|\\>\\>|\\>\\>\\=|\\?|\\[|\\]|\\^|\\^\\=|\\^\\^|\\^\\^\\=|\\{|\\||\\|\\=|\\|\\||\\|\\|\\=|\\}|\\~"
+		},
+		{
+			"name": "storage.modifier.hare",
+			"match": "\\b(as|const|def|enum|is|nullable|static|struct|union)\\b"
+		},
+		{
+			"name": "support.function.builtin.hare",
+			"match": "\\b(abort|align|alloc|append|assert|delete|free|insert|len|vaarg|vaend|vastart)\\b"
+		},
+		{
+			"name": "meta.type.annotation.hare",
+			"match": "\\@\\b.+?\\b"
+		},
+		{
+            "name": "constant.numeric.hare",
+			"match": "\\b((0x[0-9a-fA-F_])+|0o[0-7_]+|0b[01_]+|[0-9_]+(\\.[0-9]+)?([eE][+-]?[0-9_]?)?)((z|[iu](8|16|32|64)|f(32|64))?)\\b"
+		},
+		{
+			"name": "constant.language.boolean.hare",
+			"match": "\\b(false|true)\\b"
+		}
+	]
+}

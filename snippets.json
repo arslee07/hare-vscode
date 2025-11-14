@@ -1,0 +1,75 @@
+{
+    "Entrypoint": {
+        "scope": "hare",
+        "prefix": "main",
+        "body": [
+            "export fn main() void = {",
+            "\t$0",
+            "};"
+        ],
+        "description": "Log output to console"
+    },
+    "If Statement": {
+        "scope": "hare",
+        "prefix": "if",
+        "body": [
+            "if (${1:condition}) {",
+            "\t$0",
+            "};"
+        ]
+    },
+    "For loop": {
+        "scope": "hare",
+        "prefix": "for",
+        "body": [
+            "for (${1:binding}; ${2:condition}; ${3:afterthought}) {",
+            "\t$0",
+            "};"
+        ]
+    },
+    "Condition-only For loop": {
+        "scope": "hare",
+        "prefix": ["for"],
+        "body": [
+            "for (${1:condition}) {",
+            "\t$0",
+            "};"
+        ]
+    },
+    "For loop without binding": {
+        "scope": "hare",
+        "prefix": ["for"],
+        "body": [
+            "for (${1:condition}; ${2:afterthought}) {",
+            "\t$0",
+            "};"
+        ]
+    },
+    "For-each loop": {
+        "scope": "hare",
+        "prefix": ["for", "foreach"],
+        "body": [
+            "for (${1:binding} .. ${2:iterator}) {",
+            "\t$0",
+            "};"
+        ]
+    },
+    "Switch": {
+        "scope": "hare",
+        "prefix": "switch",
+        "body": [
+            "switch (${1}) {",
+            "$0",
+            "};"
+        ]
+    },
+    "Match": {
+        "scope": "hare",
+        "prefix": "match",
+        "body": [
+            "match (${1}) {",
+            "$0",
+            "};"
+        ]
+    }
+}
