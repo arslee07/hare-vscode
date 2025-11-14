@@ -7,11 +7,46 @@ const execAsync = promisify(exec);
 export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(
         vscode.languages.registerDocumentSymbolProvider('hare', new HareDocumentSymbolProvider()),
+        vscode.commands.registerCommand('hare.goToSymbol', goToSymbol),
         vscode.commands.registerCommand('hare.showDocumentation', showDocumentation),
         vscode.commands.registerCommand('hare.build', createHareTask('build')),
         vscode.commands.registerCommand('hare.test', createHareTask('test')),
         vscode.commands.registerCommand('hare.run', createHareTask('run')),
     );
+}
+
+/** 
+ * `hare.goToSymbol` command callback.
+ */
+async function goToSymbol() {
+    const symbol = await vscode.window.showInputBox({
+        prompt: 'Enter symbol name (e.g., fmt::println, bufio::init)',
+        placeHolder: 'fmt::println'
+    });
+
+    if (!symbol) {
+        return;
+    }
+
+    const { haredocExecutable } = vscode.workspace.getConfiguration('hare')
+
+    try {
+        const { stdout } = await execAsync(`${haredocExecutable} -N ${symbol}`);
+
+        const [file, line] = stdout.split(":");
+        const line_int = parseInt(line) - 1;
+
+        const document = await vscode.workspace.openTextDocument(file);
+        const selection = new vscode.Range(
+            new vscode.Position(line_int, 0),
+            new vscode.Position(line_int, 0),
+        );
+        await vscode.window.showTextDocument(document, { selection });
+    } catch (error: any) {
+        vscode.window.showErrorMessage(
+            `Failed to go to symbol: ${error.message}`
+        )
+    }
 }
 
 /** 

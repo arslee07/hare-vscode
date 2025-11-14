@@ -79,6 +79,11 @@
         "command": "hare.showDocumentation",
         "title": "Hare: Show documentation",
         "icon": "$(book)"
+      },
+      {
+        "command": "hare.goToSymbol",
+        "title": "Hare: Go to symbol",
+        "icon": "$(search)"
       }
     ],
     "menus": {
@@ -101,6 +106,11 @@
         {
           "command": "hare.showDocumentation",
           "group": "navigation@203",
+          "when": "resourceLangId == hare"
+        },
+        {
+          "command": "hare.goToSymbol",
+          "group": "navigation@204",
           "when": "resourceLangId == hare"
         }
       ]

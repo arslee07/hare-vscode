@@ -24,6 +24,10 @@ This extension adds basic support for the [Hare](https://harelang.org/) programm
 
     <img src="https://codeberg.org/arslee07/hare-vscode/raw/branch/main/assets/tasks.png" width=600 />
 
+- Go to symbol (e.g `fmt::println`)
+
+    <img src="https://codeberg.org/arslee07/hare-vscode/raw/branch/main/assets/goto.gif" width=600 />
+
 ## Building
 
 ```shell
